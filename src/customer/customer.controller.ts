@@ -1,5 +1,5 @@
 import { JwtAuthGuard } from '../auth/jwt.auth.guard';
-import { Controller, Post, Get, Request, UseGuards, Body, Param } from '@nestjs/common';
+import { Controller, Post, Get, UseGuards, Body, Param } from '@nestjs/common';
 import { CustomerService } from './customer.service';
 import { CustomerRegisterDto } from './dto/customer-register.dto';
 
