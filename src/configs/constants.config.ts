@@ -11,6 +11,8 @@ export const HTTP_TIMEOUT = 12000;
 export const HTTP_MAX_REDIRECTS = 3;
 
 export const DATE_TIME_FORMAT = "YYYY-MM-DD HH:mm:ss";
+export const DATE_TIMEZONE_FORMAT = "YYYY-MM-DD[T]HH:mm:ssZ";
+export const DATE_TIMEZONE_ZULU_FORMAT = "YYYY-MM-DD[T]HH:mm:ss.SSS[Z]";
 export const TIME_ZONE_BANGKOK = "Asia/Bangkok";
 
 export const jwtConstants = {

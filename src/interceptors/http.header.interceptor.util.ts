@@ -1,12 +1,8 @@
+import { CODE_SUCCESS } from '../configs/constants.config';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-
 import { CallHandler, ExecutionContext, HttpStatus, Injectable, Logger, NestInterceptor } from '@nestjs/common';
-
-import {
-    ACCEPT_LANGUAGE_HEADER,
-    CODE_SUCCESS,
-} from '../configs/constants.config';
+import { MESSAGES } from '../configs/messages.constants.config';
 
 export interface Response<T> {
     data: T;
@@ -18,22 +14,19 @@ export class HttpHeaderInterceptor<T> implements NestInterceptor<T, Response<T>>
 
     intercept(context: ExecutionContext, next: CallHandler): Observable<Response<T>> {
         const http = context.switchToHttp();
-        const request = http.getRequest();
         const response = http.getResponse();
-
-        // const status = new LookupReadFile().read(CODE_SUCCESS, request.headers[ACCEPT_LANGUAGE_HEADER]);
+        const status = MESSAGES[CODE_SUCCESS];
         response.status(HttpStatus.OK);
         return next.handle().pipe(map(data => {
-            // if (!data) {
-            //     return { status, data: null };
-            // } else {
-            //     if (data.status && data.status.code) {
-            //         return { status: data.status, data: data.data };
-            //     } else {
-            //         return { status, data };
-            //     }
-            // }
-            return data;
+            if (!data) {
+                return { status, data: null };
+            } else {
+                if (data.status && data.status.code) {
+                    return { status: data.status, data: data.data };
+                } else {
+                    return { status, data };
+                }
+            }
         }));
     }
 }

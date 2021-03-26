@@ -22,7 +22,7 @@ export class DatabaseConfig implements TypeOrmOptionsFactory {
             password: this.config.get('DB_PASS'),
             database: this.config.get('DB_NAME'),
             autoLoadEntities: true,
-            synchronize: false,
+            synchronize: false
         };
 
         return config;
