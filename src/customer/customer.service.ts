@@ -20,10 +20,10 @@ export class CustomerService {
         return this.customerUserRepository.findOne({ where: { username: username, password: password, status: StatusEnum.ACTIVE } });
     }
 
-    async findCustomerUserActive(username: string) {
-        const customerUser = this.customerUserRepository.findOne({ where: { username: username, status: StatusEnum.ACTIVE } });
+    async findCustomerUserById(userId: string) {
+        const customerUser = this.customerUserRepository.findOne(userId);
         if (!customerUser) {
-            this.logger.log(`Customer user username: ${username} not found or status is inactive.`);
+            this.logger.log(`Customer user id: ${userId} not found.`);
             throw new HttpException({ status: CODE_BUSINESS_ERROR }, HttpStatus.OK);
         }
         return customerUser;

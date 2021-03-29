@@ -16,3 +16,11 @@ CREATE TABLE `customer_user` (
   PRIMARY KEY (`id`),
   UNIQUE INDEX `username_UNIQUE` (`username` ASC)
 );
+
+CREATE TABLE `config` (
+  `key` VARCHAR(50) NOT NULL,
+  `value` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`key`)
+);
+
+INSERT INTO `config` (`key`, `value`) VALUES ('ADMIN_CONTACT', 'https://line.me/R/ti/p/%40085nwhvk');

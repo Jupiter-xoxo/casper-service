@@ -13,8 +13,8 @@ export class CustomerController {
     }
 
     @UseGuards(JwtAuthGuard)
-    @Get('profile/:username')
-    async getProfile(@Param('username') username: string) {
-        return await this.customerService.findCustomerUserActive(username);
+    @Get('profile/:id')
+    async getProfile(@Param('id') userId: string) {
+        return await this.customerService.findCustomerUserById(userId);
     }
 }

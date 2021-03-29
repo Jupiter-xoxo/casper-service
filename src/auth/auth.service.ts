@@ -12,17 +12,17 @@ export class AuthService {
         private jwtService: JwtService
     ) { }
 
-    async validateCustomerUser(username: string, password: string): Promise<any> {
-        const user = await this.customerService.findCustomerUserActive(username);
-        if (user && user.password === password) {
-            const { password, ...result } = user;
-            return result;
-        }
-        return null;
-    }
+    // async validateCustomerUser(username: string, password: string): Promise<any> {
+    //     const user = await this.customerService.findCustomerUserActive(username);
+    //     if (user && user.password === password) {
+    //         const { password, ...result } = user;
+    //         return result;
+    //     }
+    //     return null;
+    // }
 
     async adminlogin(user: any) {
-        const payload = { username: user.username, sub: user.userId };
+        const payload = { username: user.username, userId: user.userId };
         return {
             accessToken: this.jwtService.sign(payload),
         };
@@ -35,9 +35,10 @@ export class AuthService {
             this.logger.log(`Customer user username: ${username} or password is invalid.`);
             throw new HttpException({ status: CODE_BUSINESS_ERROR }, HttpStatus.OK);
         }
-        const payload = { username: customerUser.username, sub: customerUser.id };
+        const payload = { username: customerUser.username, userId: customerUser.id };
         return {
-            accessToken: this.jwtService.sign(payload),
+            userId: customerUser.id,
+            accessToken: this.jwtService.sign(payload)
         };
     }
 }
