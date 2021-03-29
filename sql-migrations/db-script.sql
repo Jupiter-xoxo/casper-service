@@ -1,3 +1,5 @@
+CREATE SCHEMA `casper` DEFAULT CHARACTER SET utf8 ;
+
 CREATE TABLE `customer_user` (
   `id` VARCHAR(45) NOT NULL,
   `firstname` VARCHAR(100) NOT NULL,
