@@ -1,3 +1,4 @@
+import { GameModule } from './game/game.module';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -15,6 +16,7 @@ import { CustomerModule } from './customer/customer.module';
     }),
     AuthModule,
     CustomerModule,
+    GameModule,
   ],
   controllers: [],
   providers: [],

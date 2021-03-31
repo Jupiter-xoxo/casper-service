@@ -2,7 +2,7 @@ export const MESSAGES: any = {
     "1000": {
         "code": 1000,
         "header": "",
-        "description": "สำเร็จ"
+        "description": "ทำรายการสำเร็จ"
     },
     "1899": {
         "code": 1899,

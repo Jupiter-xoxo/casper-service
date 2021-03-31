@@ -5,19 +5,19 @@ import { CustomerUser } from './entities/customer-user.entity';
 import { CustomerController } from './customer.controller';
 
 @Module({
-  imports: [
-    TypeOrmModule.forFeature([
-      CustomerUser,
-    ])
-  ],
-  providers: [
-    CustomerService
-  ],
-  controllers: [
-    CustomerController
-  ],
-  exports: [
-    CustomerService
-  ]
+    imports: [
+        TypeOrmModule.forFeature([
+            CustomerUser,
+        ])
+    ],
+    providers: [
+        CustomerService
+    ],
+    controllers: [
+        CustomerController
+    ],
+    exports: [
+        CustomerService
+    ]
 })
 export class CustomerModule { }
